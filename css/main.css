@@ -1,0 +1,21 @@
+*{
+    background: rgba(0,0,0,.2);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+}
+
+
+
+.navbar{
+    padding: 10px 0;
+    background-color: brown;
+    text-align: center;
+    color: #fff;
+}
+
+.navbar h1{
+    margin: 0;
+    font-size: 24px;
+}
