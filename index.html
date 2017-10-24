@@ -10,30 +10,24 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="wrapper">
+<div id="wrapper">
     <div class="navbar">
-        <h1>干啥子</h1>
+        <h1>比卡丘</h1>
     </div>
     <div class="header">
-        <h2>想干啥子哟</h2>
+        想干啥子哟
     </div>
-    <div id="task-form">
+    <form @submit.prevent="add" id="task-form">
         <div class="container">
-            <input id="task-input" type="text">
+            <input v-model="current.title" id="task-input" type="text">
             <button type="submit">+</button>
-            <button>***</button>
         </div>
-    </div>
+    </form>
     <div class="task-list">
         <div class="container">
-            <div class="item">
-                this is a test text;
-            </div>
-            <div class="item">
-                this is a test text;
-            </div>
-            <div class="item">
-                this is a test text;
+            未完成
+            <div v-for="todo in list" class="item">
+                {{todo.title}}
             </div>
         </div>
     </div>
@@ -48,5 +42,7 @@
 </div>
 
 <script src="lib/vue.js"></script>
+<script src="js/myStorage.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

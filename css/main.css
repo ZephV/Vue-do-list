@@ -1,21 +1,49 @@
 *{
-    background: rgba(0,0,0,.2);
+    background: rgba(0,0,0,.1);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
 }
 
+input,button{
+    padding:5px 10px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius:3px;
+}
 
+input{
+    display: block;
+    width: 100%;
+}
+
+.container{
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.navbar,.header{
+    text-align: center;
+}
 
 .navbar{
     padding: 10px 0;
     background-color: brown;
-    text-align: center;
     color: #fff;
 }
 
 .navbar h1{
     margin: 0;
     font-size: 24px;
+}
+
+.header{
+    padding:20px 0;
+    color: #333;
+    font-size: 18px;
+}
+
+/* 输入框 */
+.task-input{
+
 }
