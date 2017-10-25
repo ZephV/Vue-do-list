@@ -47,3 +47,9 @@ input{
 .task-input{
 
 }
+
+i{
+    display: block;
+    margin:10px;
+    border-bottom:1px solid #000;
+}
