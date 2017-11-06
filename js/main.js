@@ -11,14 +11,17 @@
             list: [],
             current: {}
         },
+
+        mounted :function(){
+            this.list = ms.get('list') || this.list;
+        },
+
         methods: {
             merge: function(){
 
                 var is_update = this.current.id;
                 if(is_update){
-                    var index = this.list.findIndex(function(item){
-                        return item.id === is_update;
-                    });
+                    var index = this.find_index(is_update);
                     Vue.set(this.list,index,copy(this.current));
                 }else{
                     var  title = this.current.title;
@@ -31,7 +34,9 @@
                 this.reset_current();
             },
             remove: function(id){
-                this.list.splice(id,1);
+                var index = this.find_index(id);
+                this.list.splice(index,1);
+                ms.set('list',this.list);
             },
 
             next_id: function(){
@@ -44,6 +49,25 @@
 
             reset_current: function(){
                 this.set_current({});
+            },
+
+            find_index: function(id){
+                return this.list.findIndex(function(item){
+                    return item.id  === id;
+                })
+            }
+        },
+
+        watch:{
+            list:{
+                deep:true,
+                handler:function(n,o){
+                    if (n){
+                        ms.set('list',n);
+                    }else{
+                        ms.set('list',[]);
+                    }
+                }
             }
         }
     });
