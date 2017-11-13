@@ -27,16 +27,49 @@
         mounted :function(){
             var me = this;
             this.list = ms.get('list') || this.list;
+
+            setInterval(function(){
+                me.check_alerts();
+            },1000);
+
+            Event.$on('toggle_complete',function(id){
+                if (id){
+                    me.toggle_complete(id)
+                }
+            });
+
             Event.$on('remove',function(id){
                 if (id){
                     me.remove(id)
                 }
-            })
+            });
+
+            Event.$on('set_current',function(id){
+                if (id){
+                    me.set_current(id)
+                }
+            });
         },
 
         methods: {
-            merge: function(){
 
+            check_alerts: function(){
+                var me = this;
+                this.list.forEach(function(row,i){
+                    var alert_at = row.alert_at;
+                    if (!alert_at || row.alert_confirmed) return;
+
+                    var alter_at_time = (new Date(alert_at)).getTime();
+                    var now = (new Date()).getTime();
+
+                    if (now >= alter_at_time){
+                        var confirmed = confirm(row.title);
+                        Vue.set(me.list[i],'alert_confirmed',confirmed);
+                    }
+                })
+            },
+
+            merge: function(){
                 var is_update = this.current.id;
                 if(is_update){
                     var index = this.find_index(is_update);

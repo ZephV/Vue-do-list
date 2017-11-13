@@ -1,12 +1,11 @@
 *{
-    background: rgba(0,0,0,.1);
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     position: relative;
 }
 
-input,button{
+input,button,textarea{
     padding:5px 10px;
     border: 1px solid rgba(0,0,0,.1);
     border-radius:3px;
