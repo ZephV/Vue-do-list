@@ -21,12 +21,14 @@
         el: '#wrapper',
         data: {
             list: [],
+            last_id:0,
             current: {}
         },
 
         mounted :function(){
             var me = this;
             this.list = ms.get('list') || this.list;
+            this.last_id = ms.get('last_id') || this.last_id;
 
             setInterval(function(){
                 me.check_alerts();
@@ -48,6 +50,12 @@
                 if (id){
                     me.set_current(id)
                 }
+            });
+
+            Event.$on('toggle_detail',function(id){
+               if (id){
+                   me.toggle_detail(id)
+               }
             });
         },
 
@@ -78,8 +86,11 @@
                     var  title = this.current.title;
                     if(!title && title !== 0)return;
 
+
                     var todo = copy(this.current);
-                    todo.id = this.next_id();
+                    this.last_id++;
+                    ms.set('last_id',this.last_id);
+                    todo.id = this.last_id;
                     this.list.push(todo);
                 }
                 this.reset_current();
@@ -89,12 +100,13 @@
                 this.list.splice(index,1);
             },
 
-            next_id: function(){
-                return this.list.length + 1;
-            },
-
             set_current: function(todo){
                 this.current = copy(todo);
+            },
+
+            toggle_detail: function(id){
+                var index = this.find_index(id);
+                Vue.set(this.list[index],'show_detail',!this.list[index].show_detail);
             },
 
             reset_current: function(){
