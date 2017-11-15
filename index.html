@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -14,21 +14,23 @@
 <body>
 <div id="wrapper">
     <div class="navbar">
-        <h1>比卡丘</h1>
+        <h1>时间管理工具</h1>
     </div>
     <div class="header">
-        想干啥子哟
+        想做什么呢?
     </div>
+    <!--填写内容区-->
     <form @submit.prevent="merge" id="task-form" autocomplete="off">
         <div class="container">
             <input v-model="current.title" id="task-input" type="text">
             <div v-if="current.id" class="detail">
                 <textarea v-model="current.desc"></textarea>
                 <input v-model="current.alert_at" type="datetime-local">
-                <button type="submit">+</button>
+                <button class="btn_submit" type="submit">+</button>
             </div>
         </div>
     </form>
+    <!--未完成任务显示区-->
     <div class="task-list">
         <div class="container">
             未完成
@@ -36,25 +38,26 @@
                   v-if="!todo.completed"
                   v-for="(todo,index) in list"
             ></task>
-
         </div>
     </div>
+    <!--已完成任务显示区-->
     <div class="task-list">
         <div class="container">
-            <i></i>
             已完成
             <div v-if="todo.completed" v-for="(todo,index) in list" class="item completed">
-                <button @click="toggle_complete(todo.id)">完成</button>
-                {{todo.title}}
+                <div class="toggle-complete" @click="toggle_complete(todo.id)"></div>
+                <span class="item-title">{{todo.title}}</span>
                 <button @click="remove(index)">删除</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <template id="task-tpl">
     <div class="item">
-        <button @click="action('toggle_complete',todo.id)">未完成</button>
-        {{todo.title}}
+        <div class="toggle-complete" @click="action('toggle_complete',todo.id)"></div>
+        <span class="item-title">{{todo.title}}</span>
         <button @click="action('remove',todo.id)">删除</button>
         <button @click="action('set_current',todo)">更新</button>
         <button @click="action('toggle_detail',todo.id)">详情</button>
@@ -63,6 +66,8 @@
         </div>
     </div>
 </template>
+
+
 <script src="lib/vue.js"></script>
 <script src="js/myStorage.js"></script>
 <script src="js/main.js"></script>
