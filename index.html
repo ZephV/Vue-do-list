@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>搞事情</title>
+    <title>事件管理管局</title>
     <link rel="stylesheet" href="lib/normalize.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -17,7 +17,7 @@
         <h1>时间管理工具</h1>
     </div>
     <div class="header">
-        想做什么呢?
+       你的计划是?
     </div>
     <!--填写内容区-->
     <form @submit.prevent="merge" id="task-form" autocomplete="off">
@@ -27,6 +27,7 @@
                 <textarea v-model="current.desc"></textarea>
                 <input v-model="current.alert_at" type="datetime-local">
                 <button class="btn_submit" type="submit">+</button>
+                <div class="clearf"></div>
             </div>
         </div>
     </form>

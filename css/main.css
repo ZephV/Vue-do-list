@@ -10,6 +10,10 @@ body{
     color: #444;
 }
 
+.clearf{
+    clear: both;
+}
+
 input,button,textarea{
     padding:5px 10px;
     border: 1px solid rgba(0,0,0,.1);
@@ -32,12 +36,14 @@ textarea{
 }
 
 input:focus,textarea:focus{
-    border: 1px solid #db4c3f;
+    border: 1px solid #3e9bd2;
 }
 
 button.btn_submit{
-    background: #db4c3f;
+    float: right;
+    background: #3e9bd2;
     color: #f7f3ea;
+    font-weight: bold;
 }
 
 .container{
@@ -53,7 +59,7 @@ button.btn_submit{
 
 .navbar{
     padding: 10px 0;
-    background-color: brown;
+    background-color: #3e9bd2;
     color: #fff;
 }
 
@@ -124,4 +130,9 @@ button.btn_submit{
 .completed .toggle-complete {
     background: #3e9bd2;
     border-color: #bbb;
+}
+
+.completed .item-title{
+    color: #ccc;
+    text-decoration: line-through;
 }
