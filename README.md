@@ -4,4 +4,4 @@
 
 ## 预览图
 ![预览图1](https://github.com/ZephV/vue-do-list/blob/master/Screentshots/p1.png?raw=true)
-![预览图2](https://github.com/ZephV/vue-do-list/blob/master/Screentshots/p1.png?raw=true)
+![预览图2](https://github.com/ZephV/vue-do-list/blob/master/Screentshots/p2.png)
